@@ -8,4 +8,40 @@ const LoadMainPage = () => {
         mainPage.innerHTML = data;
     })
     .catch(err => console.log(err))
-}
+};
+
+const VisitorSignIn = ()  => {
+    fetch('./signin.html')
+    .then(res => res.text())
+    .then(data => {
+        mainPage.innerHTML = data;
+    })
+    .catch(err => console.log(err))
+};
+
+const VisitorSignOut = ()  => {
+    fetch('./signout.html')
+    .then(res => res.text())
+    .then(data => {
+        mainPage.innerHTML = data;
+    })
+    .catch(err => console.log(err))
+};
+
+const viewAllVisitors = () => {
+    fetch('./visitors.html')
+    .then(res => res.text())
+    .then(data => {
+        mainPage.innerHTML = data;
+    })
+    .catch(err => console.log(err))
+};
+
+const viewBtwDates = () => {
+    fetch('./visitbtw.html')
+    .then(res => res.text())
+    .then(data => {
+        mainPage.innerHTML = data;
+    })
+    .catch(err => console.log(err))
+};

@@ -1,0 +1,92 @@
+<div class="section__content section__content--p30">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header" style="background: #444aa5;"><h4 style="color: white; font-weight: normal;font-family: 'Alegreya Sans Sc', 'Maiandra GD';">Visitor Sign In</h4></div>
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-center title-2" style="font-family: 'Alegreya Sans Sc', 'Maiandra GD';">Fill all fields</h3>
+                        </div>
+                        <hr>
+                        <form id="addVisitors">
+                            <div class="row">
+                                <div class="form-group col-lg-6">
+                                    <label for="cc-payment" class="control-label mb-1">FirstName</label>
+                                    <input id="cc-pament" name="cc-payment" type="text" class="form-control" aria-required="true" aria-invalid="false">
+                                </div>
+                                <div class="form-group has-success col-lg-6">
+                                    <label for="cc-name" class="control-label mb-1">LastName</label>
+                                    <input id="cc-name" name="cc-name" type="text" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the name on card"
+                                        autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name-error">
+                                    <span class="help-block field-validation-valid" data-valmsg-for="cc-name" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-6">
+                                    <label for="cc-email" class="control-label mb-1">Email Address</label>
+                                    <input id="cc-email" name="cc-email" type="email" class="form-control cc-email identified visa" value="" data-val="true"
+                                        data-val-required="Please enter the card email" data-val-cc-email="Please enter a valid card email"
+                                        autocomplete="cc-email">
+                                    <span class="help-block" data-valmsg-for="cc-email" data-valmsg-replace="true"></span>
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label for="cc-number" class="control-label mb-1">Mobile Number</label>
+                                    <input id="cc-number" name="cc-number" type="email" class="form-control cc-number identified visa" value="" data-val="true"
+                                        data-val-required="Please enter the card number" data-val-cc-number="Please enter a valid card number"
+                                        autocomplete="cc-number">
+                                    <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-6">
+                                    <label for="cc-wtm" class="control-label mb-1">Whom to meet</label>
+                                    <input id="cc-wtm" name="cc-wtm" type="email" class="form-control cc-wtm identified visa" value="" data-val="true"
+                                        data-val-required="Please enter the card wtm" data-val-cc-wtm="Please enter a valid card wtm"
+                                        autocomplete="cc-address">
+                                    <span class="help-block" data-valmsg-for="cc-address" data-valmsg-replace="true"></span>
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label for="cc-rfm" class="control-label mb-1">Reason for meeting</label>
+                                    <input id="cc-rfm" name="cc-rfm" type="email" class="form-control cc-rfm identified visa" value="" data-val="true"
+                                        data-val-required="Please enter the card rfm" data-val-cc-rfm="Please enter a valid card rfm"
+                                        autocomplete="cc-rfm">
+                                    <span class="help-block" data-valmsg-for="cc-rfm" data-valmsg-replace="true"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="cc-address" class="control-label mb-1">Address</label>
+                                <textarea style="height: 100px;" id="cc-address" name="cc-address" type="email" class="form-control cc-address identified visa" value="" data-val="true"
+                                    data-val-required="Please enter the card address" data-val-cc-address="Please enter a valid card address"
+                                    autocomplete="cc-address"></textarea>
+                                <span class="help-block" data-valmsg-for="cc-address" data-valmsg-replace="true"></span>
+                            </div>
+                            <button id="payment-button" class="btn btn-md">
+                                <span id="payment-button-amount">Sign In</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copyright">
+                    <p>Copyright © 2019 Josh_Beals. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #payment-button{
+        background: #444aa5;
+        color: white;
+        transition: 200ms ease-in-out;
+    }
+
+    #payment-button:hover{
+        transform: scale(1.1);
+    }
+</style>

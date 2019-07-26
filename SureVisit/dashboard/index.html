@@ -78,7 +78,7 @@
                         </li>
                         <li>
                             <a href="form.html">
-                                <i class="far fa-check-square" style="color: #0b7a27;"></i>Generate Reports</a>
+                                <i class="far fa-check-square" style="color: #0b7a27;"></i>Visitors between dates</a>
                         </li>
                         <li>
                             <a href="form.html">
@@ -108,32 +108,36 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li>
-                            <a href="#" style="color: white;">
-                                <i class="fas fa-tachometer-alt" style="color: #cf3711;"></i>Dashboard</a>
+                            <p onclick="LoadMainPage()" style="color: white; cursor: pointer;">
+                                <i class="fas fa-tachometer-alt" style="color: #cf3711;"></i>Dashboard</p>
+                        </li>
+                        <li onclick="VisitorSignIn()">
+                            <p style="cursor: pointer;">
+                                <i class="fas fa-user" style="color: #124d91;"></i>Visitor Sign In</p>
+                        </li>
+                        <li onclick="VisitorSignOut()">
+                            <P style="cursor: pointer;">
+                                <i class="far fa-check-square" style="color: #0b7a27;"></i>Visitor Sign Out</p>
+                        </li>
+                        <li onclick="viewAllVisitors()">
+                            <P style="cursor: pointer;">
+                                <i class="fas fa-table" style="color: #cf1610;"></i>View all Visitors</p>
+                        </li>
+                        <li onclick="viewBtwDates()">
+                            <P style="cursor: pointer;">
+                                <i class="far fa-clock" style="color: #e9f356;"></i>Visitors between dates</p>
                         </li>
                         <li>
-                            <a href="chart.html">
-                                <i class="fas fa-chart-bar" style="color: #e9f356;"></i>Sign a visitor in</a>
+                            <P style="cursor: pointer;">
+                                <i class="far fa-folder-open" style="color: #0b7a27;"></i>Generate Reports</p>
                         </li>
                         <li>
-                            <a href="table.html">
-                                <i class="fas fa-table" style="color: #116acf;"></i>Sign a visitor out</a>
+                            <P style="cursor: pointer;">
+                                <i class="fas fa-cog" style="color: #6fe1e9;"></i>Change Password</p>
                         </li>
                         <li>
-                            <a href="table.html">
-                                <i class="fas fa-table" style="color: #116acf;"></i>View all Visitors</a>
-                        </li>
-                        <li>
-                            <a href="form.html">
-                                <i class="far fa-check-square" style="color: #0b7a27;"></i>Generate Reports</a>
-                        </li>
-                        <li>
-                            <a href="form.html">
-                                <i class="fas fa-cog" style="color: #6fe1e9;"></i>Change Password</a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-sign-out-alt" style="color: #cf3711;"></i>Log Out</a>
+                            <P style="cursor: pointer;">
+                                <i class="fas fa-walking" style="color: #e9f356;"></i>Log Out</p>
                         </li>
                     </ul>
                 </nav>
