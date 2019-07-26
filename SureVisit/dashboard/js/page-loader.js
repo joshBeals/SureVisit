@@ -25,7 +25,9 @@ const VisitorSignOut = ()  => {
     .then(data => {
         mainPage.innerHTML = data;
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err));
+
+    signedVisitors();
 };
 
 const viewAllVisitors = () => {
