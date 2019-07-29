@@ -35,6 +35,7 @@ login.addEventListener('click', () => {
             </div>`;
         }
     })
+    .catch(err => console.log(err));
 });
 
 // function to set cookie

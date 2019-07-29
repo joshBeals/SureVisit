@@ -2,7 +2,7 @@
 const addVisitor = () => {
     let jwt = getCookie('jwt');
     if(!jwt){
-        window.location.replace("http://localhost/surevisit/web/index.html");
+        window.location.replace("http://localhost/surevisit/login/index.html");
     }
     fetch('http://localhost/surevisit/api/controllers/add_visitor.php', {
         method: 'POST',
@@ -45,7 +45,7 @@ const addVisitor = () => {
 const signedVisitors = () => {
     let jwt = getCookie('jwt');
     if(!jwt){
-        window.location.replace("http://localhost/surevisit/web/index.html");
+        window.location.replace("http://localhost/surevisit/login/index.html");
     }
     fetch('http://localhost/surevisit/api/controllers/getVisitors.php', {
         method: 'POST',
@@ -94,7 +94,7 @@ const signedVisitors = () => {
 const SignVisitorOut = (id) => {
     let jwt = getCookie('jwt');
     if(!jwt){
-        window.location.replace("http://localhost/surevisit/web/index.html");
+        window.location.replace("http://localhost/surevisit/login/index.html");
     }
     fetch('http://localhost/surevisit/api/controllers/VisitorSignOut.php', {
         method: 'POST',
@@ -128,7 +128,7 @@ const SignVisitorOut = (id) => {
 const seeAllVisitors = () => {
     let jwt = getCookie('jwt');
     if(!jwt){
-        window.location.replace("http://localhost/surevisit/web/index.html");
+        window.location.replace("http://localhost/surevisit/login/index.html");
     }
     fetch('http://localhost/surevisit/api/controllers/getVisitors.php', {
         method: 'POST',
