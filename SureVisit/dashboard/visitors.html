@@ -2,7 +2,7 @@
         <div class="container-fluid">
             <div style="display: flex; justify-content: center; align-items: center;">
                 <form class="form-header">
-                    <input class="au-input au-input--xl" type="text" name="search" placeholder="Search via name &amp; date(YYYY-MM-DD)" />
+                    <input id="search" class="au-input au-input--xl" onkeyup="searchVisitors()" type="text" name="search" placeholder="Search via any parameter" />
                     <button class="au-btn--submit">
                         <i class="zmdi zmdi-search"></i>
                     </button>
