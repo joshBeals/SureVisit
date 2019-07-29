@@ -227,7 +227,73 @@ function searchVisitors() {
         });
     })
     .catch(err => console.log(err))
-  }
+};
+
+function getVisitorsBtw(){
+    const from = document.getElementById('from');
+    const to = document.getElementById('to');
+
+    let arrFrom = from.value.split('-');
+    let arrTo = to.value.split('-');
+
+    const [ yearF, monthF, dayF ] = arrFrom;
+    const [ yearT, monthT, dayT ] = arrTo;
+
+    let jwt = getCookie('jwt');
+    if(!jwt){
+        window.location.replace("http://localhost/surevisit/login/index.html");
+    }
+    fetch('http://localhost/surevisit/api/controllers/getVisitors.php', {
+        method: 'POST',
+        headers: {
+            'Accept':'application/json, text/plain/ */*',
+            'Content-type':'application/json'
+        },
+        body:JSON.stringify({jwt:jwt})
+    })
+    .then(res => res.json())
+    .then(data => {
+        const dates = data.data.map(visitor => {
+            let dateTime = visitor.time_in.split(" ");
+            const [ date, time ] = dateTime;
+            return date.split("-");
+        })
+        .filter(date => (((date[0] >= yearF) && (date[0] <= yearT)) && ((date[1] >= monthF) && (date[1] <= monthT)) && ((date[2] >= dayF) && (date[2] <= dayT))))
+        .map(date => (`${date[0]}-${date[1]}-${date[2]}`));
+
+        const visitors = data.data.filter(visitor => dates.indexOf(visitor.time_in.split(" ")[0]) > -1);
+        
+        document.getElementById('visitorsB_W').innerHTML = '';
+        visitors.forEach(visitor => {
+            document.getElementById('visitorsB_W').innerHTML += `
+            <tr>
+                <td>
+                    <div class="badge badge-pill text-white p-2" style="background: #444aa5;"># ${visitor.id}</div>
+                </td>
+                <td>
+                    ${visitor.firstname} ${visitor.lastname}
+                </td>
+                <td>
+                    ${visitor.email}
+                </td>
+                <td>
+                    ${visitor.mobile}
+                </td>
+                <td>
+                    <div class="badge badge-pill badge-warning text-white p-2">${visitor.wtm}</div>
+                </td> 
+                <td>
+                    <div class="badge badge-pill text-white p-2"  style="background: #444aa5;">${visitor.time_in}</div>
+                </td>
+                <td>
+                    ${visitor.time_out === null ? '<div class="badge badge-pill badge-danger text-white p-2">Not Signed Out</div>' : '<div class="badge badge-pill badge-success text-white p-2">'+visitor.time_out+'</div>'}
+                </td>
+            </tr>
+            `;
+        });
+    })
+    .catch(err => console.log(err))
+}
 
 // get or read cookie
 function getCookie(cname){
