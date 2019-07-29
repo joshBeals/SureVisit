@@ -110,6 +110,20 @@
 
         }
 
+        public function signout($id){
+
+            $query = "UPDATE visitors SET time_out = CURRENT_TIMESTAMP WHERE id = ".$id;
+
+            $stmt = $this->conn->prepare($query);
+
+            if($stmt->execute()){
+                return true;
+            }
+
+            return false;
+
+        }
+
     }
 
 ?>
