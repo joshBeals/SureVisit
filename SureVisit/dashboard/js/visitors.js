@@ -1,4 +1,61 @@
 
+const passChange = () =>  {
+
+    if(document.getElementById('oldPassword').value === '' || document.getElementById('newPassword').value ===  '' || document.getElementById('repeatNewPassword').value === ''){
+        document.getElementById('inner').innerHTML = `
+        <h2 class="text-danger mb-2">Error!!!</h2>
+        <p class="text-dark mb-1">Fields cannot be left empty!!!</p>
+        <button class="btn btn-secondary btn-sm" onclick="document.getElementById('mymodal').className = 'hide';">Close</button>
+        `;
+        document.getElementById('mymodal').className = 'show';
+    }else if(document.getElementById('newPassword').value !== document.getElementById('repeatNewPassword').value){
+        document.getElementById('inner').innerHTML = `
+        <h2 class="text-danger mb-2">Error!!!</h2>
+        <p class="text-dark mb-1">Passwords Don't Match!!!</p>
+        <button class="btn btn-secondary btn-sm" onclick="document.getElementById('mymodal').className = 'hide';">Close</button>
+        `;
+        document.getElementById('mymodal').className = 'show';
+    }else{
+        let jwt = getCookie('jwt');
+        if(!jwt){
+            window.location.replace("http://localhost/surevisit/login/index.html");
+        }
+        fetch('http://localhost/surevisit/api/controllers/change_password.php', {
+            method: 'POST',
+            headers: {
+                'Accept':'application/json, text/plain/ */*',
+                'Content-type':'application/json'
+            },
+            body:JSON.stringify({
+                oldPassword : document.getElementById('oldPassword').value,
+                newPassword : document.getElementById('repeatNewPassword').value,
+                jwt : jwt
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.status === '1'){
+                document.getElementById('inner').innerHTML = `
+                <h2 class="text-success mb-2">Success!!!</h2>
+                <p class="text-dark mb-1">${data.message}</p>
+                <button class="btn btn-secondary btn-sm" onclick="document.getElementById('mymodal').className = 'hide';">Close</button>
+                `;
+            }else{
+                document.getElementById('inner').innerHTML = `
+                <h2 class="text-danger mb-2">Oops!!!</h2>
+                <p class="text-dark mb-1">${data.message}</p>
+                <button class="btn btn-secondary btn-sm" onclick="document.getElementById('mymodal').className = 'hide';">Close</button>
+                `;
+            }
+            document.getElementById('mymodal').className = 'show';
+            document.getElementById('oldPassword').value = '';
+            document.getElementById('newPassword').value = '';
+            document.getElementById('repeatNewPassword').value = '';
+        })
+        .catch(err => console.log(err))
+    }
+}
+
 const addVisitor = () => {
     let jwt = getCookie('jwt');
     if(!jwt){

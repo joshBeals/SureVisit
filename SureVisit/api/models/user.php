@@ -57,43 +57,36 @@
         }
 
         // update a user record
-        public function update(){
-        
-            // if password needs to be updated
-            $password_set=!empty($this->password) ? ", password = :password" : "";
-        
-            // if no posted password, do not update the password
-            $query = "UPDATE " . $this->table_name . "
-                    SET
-                        username = :username
-                        {$password_set}
-                    WHERE id = :id";
-        
-            // prepare the query
+        public function changePassword($oldPassword, $newPassword){
+            $query = "SELECT * FROM admin";
             $stmt = $this->conn->prepare($query);
-        
-            // sanitize
-            $this->firstname=htmlspecialchars(strip_tags($this->username));
-        
-            // bind the values from the form
-            $stmt->bindParam(':fullname', $this->fullname);
-        
-            // hash the password before saving to database
-            if(!empty($this->password)){
-                $this->password=htmlspecialchars(strip_tags($this->password));
-                $password_hash = password_hash($this->password, PASSWORD_BCRYPT);
-                $stmt->bindParam(':password', $password_hash);
-            }
-        
-            // unique ID of record to be edited
-            $stmt->bindParam(':id', $this->id);
-        
-            // execute the query
             if($stmt->execute()){
-                return true;
+                while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                    if(password_verify($oldPassword, $row['password'])){
+                        $pass = password_hash(htmlspecialchars(strip_tags($newPassword)), true);
+
+                        $query = "UPDATE admin
+                                SET
+                                    password = '$pass'
+                                WHERE id = 1";
+
+                        // prepare the query
+                        $stmt = $this->conn->prepare($query);
+
+                        // execute the query
+                        if($stmt->execute()){
+                            return true;
+                        }
+
+                        return false;
+                    }
+
+                    return false;
+                }
             }
-        
-            return false;
+            else{
+                return false;
+            }
         }
 
     }

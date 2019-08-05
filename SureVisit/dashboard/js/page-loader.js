@@ -47,3 +47,12 @@ const viewBtwDates = () => {
     })
     .catch(err => console.log(err))
 };
+
+const changePassword = () => {
+    fetch('./password.html')
+    .then(res => res.text())
+    .then(data => {
+        mainPage.innerHTML = data;
+    })
+    .catch(err => console.log(err))
+};
